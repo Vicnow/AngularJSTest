@@ -1,0 +1,21 @@
+<nav class="nav nav-pills flex-column flex-sm-row mb-5" ng-controller="MenuController">
+    <a class="flex-sm-fill text-sm-center nav-link active" aria-current="page" href="#/">{{tituloTab1}}</a>
+    <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">{{tituloTab2}}</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">{{tituloTab3}}</a>
+    </li>
+</nav>
+
+<div class="container list-container">
+    <input type="text" my-autocomplete="itemsNames" placeholder="Buscar producto" ng-model="itemSearch.title">
+    <div class="card mt-5" ng-repeat="item in items | filter : itemSearch" ng-hide = "main_art && main_art != item.title">
+        <h5 class="card-header">{{item.title}}</h5>
+        <div class="card-body" ng-controller="CarController">
+          <p class="card-text">{{item.description}}</p>
+          <a href="#/product/info/{{item.id}}" class="btn btn-primary">Ver producto</a>
+          <a href="#/" class="btn btn-secondary" ng-click="addArtc(item.title)">Agregar al Carrito</a>
+        </div>
+      </div>
+</div>

@@ -1,0 +1,41 @@
+<nav class="nav nav-pills flex-column flex-sm-row" ng-controller="MenuController">
+    <a class="flex-sm-fill text-sm-center nav-link" aria-current="page" href="#/">{{tituloTab1}}</a>
+    <a class="flex-sm-fill text-sm-center nav-link" aria-current="page" href="#/product/info/{{item.id}}">{{tituloTab2}}</a>
+    <a class="flex-sm-fill text-sm-center nav-link active" aria-current="page" href="#/product/info/modal/{{item.id}}">{{tituloTab3}}</a>
+</nav>
+
+<div class="item-info-container">
+    <div class="card" style="width: 18rem;">
+        <img src="{{item.image}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#itemModal">
+                Click sobre Mi para info!!
+              </button>
+        </div>
+    </div>
+</div>
+<!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="itemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{item.title}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p><strong>Categoria - </strong>{{item.category}}</p>
+            <p><strong>Descripci&oacute;n</strong></p>
+            <p>{{item.description}}</p>
+            <p><strong>Precio : {{ item.price | currency}}</strong></p>
+        </div>
+        <div class="modal-footer" ng-controller="CarController">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" ng-click="addArtc(item.title)">Agregar al Carrito</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
